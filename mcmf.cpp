@@ -446,7 +446,7 @@ void MCMF_CS2::up_node_scan( NODE *i)
 
 void MCMF_CS2::price_update()
 {
-	register NODE *i;
+	NODE *i;
 	excess_t remain;
 	// total excess of unscanned nodes with positive excess;
 	BUCKET *b; // current bucket;
@@ -503,12 +503,12 @@ void MCMF_CS2::price_update()
 
 int MCMF_CS2::relabel( NODE *i)
 {
-	register ARC *a; // current arc from i
-	register ARC *a_stop; // first arc from the next node
-	register ARC *a_max; // arc which provides maximum price
-	register price_t p_max; // current maximal price
-	register price_t i_price; // price of node  i
-	register price_t dp; // current arc partial residual cost
+	ARC *a; // current arc from i
+	ARC *a_stop; // first arc from the next node
+	ARC *a_max; // arc which provides maximum price
+	price_t p_max; // current maximal price
+	price_t i_price; // price of node  i
+	price_t dp; // current arc partial residual cost
 
 	p_max = _price_min;
 	i_price = i->price();
@@ -568,9 +568,9 @@ int MCMF_CS2::relabel( NODE *i)
 
 void MCMF_CS2::discharge( NODE *i)
 {
-	register ARC *a;// an arc from i
-	register NODE *j; // head of a
-	register long df; // amoumt of flow to be pushed through a
+	ARC *a;// an arc from i
+	NODE *j; // head of a
+	long df; // amoumt of flow to be pushed through a
 	excess_t j_exc; // former excess of j
 
 	_n_discharge ++;
