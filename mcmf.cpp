@@ -1402,7 +1402,8 @@ void MCMF_CS2::cs2_cost_restart( double *objective_cost)
 
 	cs_cost_reinit();
   
-	printf ("c Init. epsilon = %6.0f\n", _epsilon);
+	// printf ("c Init. epsilon = %6.0f\n", _epsilon);
+	printf ("c Init. epsilon = %lld\n", _epsilon);
 	cc = update_epsilon();
   
 	if (cc != 0) {
@@ -1443,7 +1444,8 @@ void MCMF_CS2::print_solution()
 	ARC *a;
 	long ni;
 	price_t cost;
-	printf ("c\ns %.0l\n", cost );
+	//printf ("c\ns %.0l\n", cost );
+	printf ("c\ns %.0lld\n", cost );
 
 	for ( i = _nodes; i < _nodes + _n; i ++ ) {
 		ni = N_NODE( i );
@@ -1474,13 +1476,13 @@ void MCMF_CS2::print_graph()
 	NODE *i;
 	ARC *a;
 	long ni, na;
-	printf ("\nGraph: %d\n", _n);
+	printf ("\nGraph: %ld\n", _n);
 	for ( i = _nodes; i < _nodes + _n; i ++ ) {
 		ni = N_NODE( i );
-		printf("\nNode %d", ni);
+		printf("\nNode %ld", ni);
 		for ( a = i->suspended(); a != (i+1)->suspended(); a ++) {
 			na = N_ARC( a );
-			printf("\n {%d} %d -> %d  cap: %d  cost: %d", na,
+			printf("\n {%ld} %ld -> %ld  cap: %ld  cost: %lld", na,
 				ni, N_NODE(a->head()), _cap[N_ARC(a)], a->cost());
 		}
     }
